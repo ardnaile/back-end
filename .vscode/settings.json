@@ -1,0 +1,5 @@
+{
+  "markdown.marp.themes": [
+    "./assets/marpit/venson-marpit-theme.css",
+  ]
+}
