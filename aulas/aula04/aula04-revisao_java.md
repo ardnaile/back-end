@@ -60,7 +60,7 @@ class: normal
 
 ---
 
-## Java Development Kit (JKD)
+## Java Development Kit (JDK)
 
 ![bg right:50% fit](https://hermes.dio.me/articles/cover/82103aa9-a19c-483a-b14a-6ba7f1abb13e.png)
 
@@ -111,47 +111,29 @@ Cada JVM implementa o Garbage Collector de acordo com a especificação. Essa es
 
 ---
 
-## Imports e Packages
+### Uso de memória
 
-Packages são usados no Java para organizar diferentes conjuntos de classes. Cada classe possui seu package definido logo no início do documento.
+|tipo| estimativa | capacidade |
+|-|-| - |
+| `byte` | 1 byte | 2⁸ = 256 |
+| `short` | 2 bytes | 2¹⁶ = 65536 |
+| `int` | 4 bytes | 2³² = ~ 4bilhões |
+| `float` | 4 bytes | 2³² = ~ 4bilhões |
+| `double` | 8 bytes | 2⁶⁴ |
+| `Object` | pelo menos 16 bytes (12 bytes para cabeçalho) | `Java Heap Size` |
 
-````java
-// package [nome_do_pacote]
-package com.organizacao.modelos;
-````
-
----
-
-Para referenciar uma classe ou um conjunto delas (packages), é preciso declarar suas importações diretamente no arquivo onde serão utilizadas.
-
-````java
-// import [nome_do_pacote]
-import com.organizacao.modelos.Pessoa;
-import com.organizacao.servicos.*;
-// ...
-
-public static void main(String[] args) {
-    Pessoa pessoa = new Pessoa();
-}
-````
+> Variáveis que armazenam referências possuem geralmente 4 bytes
+> O tamanho de cada tipo de dados é dependente de plataforma
 
 ---
 
-Sem a declaração de `import` é necessário especificar o caminho completo do package de uma classe.
+### Minecraft e o problema da precisão
 
-````java
-// sem imports
-// ...
+![bg fit left:50%](https://static.wikia.nocookie.net/minecraft_gamepedia/images/f/f4/Far_lands_corner_pocket.png/revision/latest?cb=20191228085936)
 
-public static void main(String[] args) {
-    com.organizacao.modelos.Pessoa pessoa = new com.organizacao.modelos.Pessoa();
-}
-````
-
-Porque usar packages?
-
-* Encapsula um conjunto de classes
-* Evita conflitos de nome e garantem encapsulamento e proteção
+* Mapa usa coordenadas de ponto flutuante (double)
+* Quanto maior é a distância do centro `(x: 0 / y: 0 / z: 0)`, menor a precisão da parte fracionária.
+* Física afetada
 
 ---
 
@@ -162,6 +144,8 @@ Porque usar packages?
 * Booleanos
 * Strings
 * Arrays
+* Estruturas de Decisão e Repetição
+* Imports e Packages
 
 ---
 
@@ -375,6 +359,50 @@ while(condicaoBooleana) {
     // repete enquanto a condição booleana for verdadeira
 }
 ````
+
+---
+
+## Imports e Packages
+
+Packages são usados no Java para organizar diferentes conjuntos de classes. Cada classe possui seu package definido logo no início do documento.
+
+````java
+// package [nome_do_pacote]
+package com.organizacao.modelos;
+````
+
+---
+
+Para referenciar uma classe ou um conjunto delas (packages), é preciso declarar suas importações diretamente no arquivo onde serão utilizadas.
+
+````java
+// import [nome_do_pacote]
+import com.organizacao.modelos.Pessoa;
+import com.organizacao.servicos.*;
+// ...
+
+public static void main(String[] args) {
+    Pessoa pessoa = new Pessoa();
+}
+````
+
+---
+
+Sem a declaração de `import` é necessário especificar o caminho completo do package de uma classe.
+
+````java
+// sem imports
+// ...
+
+public static void main(String[] args) {
+    com.organizacao.modelos.Pessoa pessoa = new com.organizacao.modelos.Pessoa();
+}
+````
+
+Porque usar packages?
+
+* Encapsula um conjunto de classes
+* Evita conflitos de nome e garantem encapsulamento e proteção
 
 ---
 
