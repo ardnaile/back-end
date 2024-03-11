@@ -19,7 +19,7 @@ _class: lead
 paginate: true
 -->
 
-## Aula 02 - Exercício A
+## Exercício 01
 
 Implemente um programa em java que seja capaz de gerar e retornar no console o seguinte modelo de mensagem:
 
@@ -35,7 +35,7 @@ A mensagem de texto deverá conter os seguintes requisitos:
 
 ---
 
-## Aula 02 - Exercício B
+## Exercício 02
 
 Utilizando como base o exercício anterior, crie uma classe chamada `JogadorGerador` contendo um método capaz de realizar as requisições HTTP apenas uma vez e construir múltiplos objetos do tipo `Jogador`.
 
