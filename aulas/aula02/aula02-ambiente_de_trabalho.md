@@ -159,34 +159,6 @@ String jogoAleatorio = jogos[indiceAleatorio];
 
 ---
 
-## Exercícios
-
----
-
-### Exercício A
-
-Implemente um programa em java que seja capaz de gerar e retornar no console o seguinte modelo de mensagem:
-
-````
-Cássio Ramos é um futebolista brasileiro de 32 anos que atua como goleiro. Atualmente defende o Corinthians.
-````
-
-A mensagem de texto deverá conter os seguintes requisitos:
-* [Nome](https://venson.net.br/resources/data/nomes.txt) e [sobrenome](https://venson.net.br/resources/data/sobrenomes.txt) aleatórios
-* Idade (entre 17 e 40 anos)
-* [Posição](https://venson.net.br/resources/data/posicoes.txt) (aleatória)
-* [Clube](https://venson.net.br/resources/data/clubes.txt) (aleatório)
-
----
-
-### Exercício B
-
-Utilizando como base o exercício anterior, crie uma classe chamada `JogadorGerador` contendo um método capaz de realizar as requisições HTTP apenas uma vez e construir múltiplos objetos do tipo `Jogador`.
-
-Crie também uma classe chamada `Jogador` contendo métodos que permitam que cada dado do jogador seja acessado individualmente através de métodos (`getNome`, `getSobrenome`, `getPosicao`, `getIdade`, `getClube`) e um método que gere a mensagem do exercício anterior (`getDescricao`).
-
----
-
 ## O que aprendemos nessa aula?
 
 * Instalar as ferramentas que serão utilizadas na disciplina;
