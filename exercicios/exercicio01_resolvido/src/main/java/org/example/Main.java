@@ -22,6 +22,10 @@ public class Main {
         // pegamos uma palavra da nova lista palavras, no índice aleatório que definimos
         String palavra = palavras[indexAleatorio];
 
+        palavra = palavra.replace("\"", "");
+        palavra = palavra.replace(",", "");
+        palavra = palavra.toUpperCase();
+
         return palavra;
     }
     // função para gerar idade aleatória, com "range manual"
