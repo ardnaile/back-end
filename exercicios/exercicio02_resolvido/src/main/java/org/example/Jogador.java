@@ -1,11 +1,13 @@
 package org.example;
 
 public class Jogador {
-    private String nome;
+    private String nome; // Esses são os atributos da classe, que vão estar no objeto
     private String sobrenome;
     private String posicao;
     private String clube;
     private int idade;
+
+    // Objeto construtor
 
     public Jogador(String nome, String sobrenome, String posicao, String clube, int idade) {
         this.nome = nome;
@@ -15,7 +17,8 @@ public class Jogador {
         this.idade = idade;
     }
 
-    // Métodos para acessar cada uma das infos
+    // Métodos getters
+
     public String getNome() {
         return nome;
     }
@@ -36,7 +39,8 @@ public class Jogador {
         return idade;
     }
 
-    // Gerando a descrição igual no exercício 01
+    // Gerando a descrição
+
     public String getDescricao() {
         return nome + " " + sobrenome + " É UM JOGADOR DE FUTEBOL BRASILEIRO DE "
                 + idade + " ANOS QUE ATUA COMO "
@@ -44,4 +48,3 @@ public class Jogador {
                 + clube + ".";
     }
 }
-
