@@ -1,0 +1,23 @@
+@startuml
+
+skin rose
+
+start
+fork
+  repeat :Cria um novo Indicavel [Filme/Ator];
+    :Cria uma nova Indicacao;
+    if (O Indicavel é elegivel) then (sim)
+      :numeroDeIndicaoes+1;
+    else (nao)
+      :Retorna um erro;
+      stop
+    endif
+    :Adiciona indicação usando o service OscarService;
+  repeat while()
+fork again
+  :Retorna a lista de indicacoes;
+end fork;
+
+stop
+
+@enduml

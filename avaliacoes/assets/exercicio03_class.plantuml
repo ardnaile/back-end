@@ -1,0 +1,31 @@
+@startuml
+
+skin rose
+
+interface Indicavel {
+  -Boolean elegivel;
+  -Short numeroDeIndicacoes;
+}
+
+class Filme <<Component>> implements Indicavel {
+  -String nome;
+  -String genero;
+}
+
+class Ator <<Component>> implements Indicavel {
+  -String nome;
+  -String nacionalidade;
+}
+
+class Indicacao <<Component>> {
+  -Indicavel indicavel;
+  -String categoria;
+}
+
+class OscarService <<Service>> {
+  -ArrayList<Indicacao> indicacoes;
+  +void adicionarIndicacao(Indicacao indicacao)
+  +void mostrarListaIndicados()
+}
+
+@enduml
