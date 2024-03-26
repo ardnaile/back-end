@@ -27,9 +27,4 @@ public class Indicacao {
         this.categoria = categoria;
     }
 }
-/*
-podemos criar uma nova indicação assim:
 
-Indicacao indicacao = new Indicacao(new Filme(), "Melhor Filme");
-
- */

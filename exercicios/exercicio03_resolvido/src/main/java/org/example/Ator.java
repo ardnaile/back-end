@@ -1,7 +1,6 @@
 package org.example;
 
-// criando uma classe de objetos do tipo Indicavel
-public class Ator implements Indicavel { // um Ator pode ser indicável ou não, injeção de dependencias
+public class Ator implements Indicavel {
     private boolean elegivel;
     private int numeroDeIndicacoes;
 
@@ -20,7 +19,8 @@ public class Ator implements Indicavel { // um Ator pode ser indicável ou não,
         return numeroDeIndicacoes;
     }
 
-    @Override /*
+    @Override
+    /*
     @Override é uma anotação usada para indicar que um método está substituindo o da classe pai
     */
     public void incrementarIndicacoes() { // método para incrementar o número de indicação
