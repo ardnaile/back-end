@@ -3,18 +3,22 @@
 skin rose
 
 interface Indicavel {
-  -Boolean elegivel;
-  -Short numeroDeIndicacoes;
+  -Boolean isElegivel();
+  -void setNumeroDeIndicacoes();
 }
 
 class Filme <<Component>> implements Indicavel {
   -String nome;
   -String genero;
+  +Boolean elegivel;
+  +Short numeroDeIndicacoes;
 }
 
 class Ator <<Component>> implements Indicavel {
   -String nome;
   -String nacionalidade;
+  -Boolean elegivel;
+  -Short numeroDeIndicacoes;
 }
 
 class Indicacao <<Component>> {
