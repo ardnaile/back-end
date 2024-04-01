@@ -19,16 +19,26 @@ _class: lead
 paginate: true
 -->
 
-## Exercício 01
-`Entrega: 11 de Março`
+## Calendário
 
-Implemente um programa em java que seja capaz de gerar e retornar no console o seguinte modelo de mensagem:
+| nº | Turma 01 | Turma 02 |
+|--|--|--|
+|01|11 de Março|13 de Março|
+|02|18 de Março|20 de Março|
+|03|25 de Março|27 de Março|
+|04|01 de Abril|03 de Abril|
+
+---
+
+## Exercício 01
+
+Implemente um programa em java que seja capaz de gerar aleatoriamente e retornar no console o seguinte modelo de mensagem:
 
 ````
 Cássio Ramos é um futebolista brasileiro de 32 anos que atua como goleiro. Atualmente defende o Corinthians.
 ````
 
-A mensagem de texto deverá conter os seguintes requisitos:
+A mensagem de texto deverá conter os seguintes atributos aleatórios:
 * [Nome](https://venson.net.br/resources/data/nomes.txt) e [sobrenome](https://venson.net.br/resources/data/sobrenomes.txt) aleatórios
 * Idade (entre 17 e 40 anos)
 * [Posição](https://venson.net.br/resources/data/posicoes.txt) (aleatória)
@@ -48,7 +58,7 @@ Crie também uma classe chamada `Jogador` contendo métodos que permitam que cad
 ## Exercício 3
 `Entrega: 25 de Março`
 
-Crie um novo projeto usando o Spring Framework que implemente um **service** chamada `OscarService` que seja responsável por adicionar filmes e atores à uma lista de indicados (array do tipo `Indicacao`). O service também deverá retornar a lista com todos os indicados e suas categorias;
+Crie um novo projeto usando o Spring Framework que implemente um **service** chamado `OscarService` que seja responsável por adicionar filmes e atores à uma lista de indicados (array do tipo `Indicacao`). O service também deverá retornar a lista com todos os indicados e suas categorias;
 
 Um ator ou filme não poderá ser indicado um atributo `elegivel` for falso. Para cada nova indicação, um atributo `numeroDeIndicacoes` deve ser incrementado. Ambos os atributos devem ser implementados por meio de uma interface chamada `Indicavel`.
 
@@ -73,3 +83,13 @@ O projeto deverá conter pelo menos:
 * 3x Components
 
 > BONUS: Implemente também a persistência da lista de indicados em um arquivo de texto;
+
+---
+
+## Exercício 04
+
+`Entrega: 01 de Março (Turma 01) e 03 de Março (Turma 02)`
+
+Crie um web service capaz de prover através de requisição GET uma mensagem como a do exercício 01 / exercício 02. Novas mensagens/jogadores devem ser geradas à cada requisição. O web service deverá carregar uma lista de [nomes](https://venson.net.br/resources/data/nomes.txt), [sobrenomes](https://venson.net.br/resources/data/sobrenomes.txt), [posições](https://venson.net.br/resources/data/posicoes.txt) e [clubes](https://venson.net.br/resources/data/clubes.txt) apenas durante sua inicialização.
+
+> Bônus: Implemente uma rota extra para gerar e apresentar jogadores diretamente no formato JSON.
