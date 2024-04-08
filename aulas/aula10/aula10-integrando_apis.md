@@ -26,6 +26,14 @@ Um serviço web é comumente chamado a interagir com outros serviços dos quais 
 
 ---
 
+### Repositórios de APIs Públicas
+
+- [https://github.com/public-apis/public-apis](https://github.com/public-apis/public-apis)
+- [https://publicapis.dev/](https://publicapis.dev/)
+- [https://publicapi.dev/](https://publicapi.dev/)
+
+---
+
 ## RestClient
 
 ![bg fit left](https://terasolunaorg.github.io/guideline/5.2.0.RELEASE/en/_images/RestClientOverview.png)
