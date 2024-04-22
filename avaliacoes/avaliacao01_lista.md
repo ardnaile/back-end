@@ -27,6 +27,20 @@ paginate: true
 |02|18 de Março|20 de Março|
 |03|25 de Março|27 de Março|
 |04|01 de Abril|03 de Abril|
+|05|06 de Maio|08 de Maio|
+|06|06 de Maio|08 de Maio|
+
+---
+
+## Entrega
+
+Cada um dos exercícios deverá ser postado pelo estudante em um repositório pessoal em um serviço de hospedagem de repositórios git (Gitlab, Github...).
+
+O repositório será compartilhado com o professor e deve estar em **modo público** (ou com permissões de acesso ao professor).
+
+A raiz deve conter um arquivo README.md, assim como a separação de **uma pasta para cada um dos exercícios** abaixo.
+
+Exercícios em grupo **devem ser postados individualmente** por cada participante da equipe.
 
 ---
 
@@ -89,3 +103,23 @@ O projeto deverá conter pelo menos:
 Crie um web service capaz de prover através de requisição GET uma mensagem como a do exercício 01 / exercício 02. Novas mensagens/jogadores devem ser geradas à cada requisição. O web service deverá carregar uma lista de [nomes](https://venson.net.br/resources/data/nomes.txt), [sobrenomes](https://venson.net.br/resources/data/sobrenomes.txt), [posições](https://venson.net.br/resources/data/posicoes.txt) e [clubes](https://venson.net.br/resources/data/clubes.txt) apenas durante sua inicialização.
 
 > Bônus: Implemente uma rota extra para gerar e apresentar jogadores diretamente no formato JSON.
+
+---
+
+## Exercício 05
+
+Crie um documento (formatos ODX, DOC, DOCX ou MD) contendo a modelagem proposta pela Fase 2 da [Atividade da Aula 13](../aulas/aula13/aula13-atividade01.pdf). Esse documento deverá conter uma descrição da modelagem realizada, bem como todas as rotas/endpoints definidos pelo grupo.Para cada um dos recursos, deve ser especificado um conjunto de métodos necessários para realizar **operações CRUD**. Cada método deverá incluir: **URI**, **Método HTTP**, **Requisição esperada**, **Erros esperados** e **Status Codes**.
+
+**ATENÇÃO!** A postagem desse documento deverá ser feita no repositório de TODOS os membros do grupo.
+
+---
+
+## Exercício 06
+
+Utilizando os modelos do exercício anterior e da Fase 3 da [Atividade da Aula 13](../aulas/aula13/aula13-atividade01.pdf). Implemente um controlador de uma aplicação Spring que faça o mapeamento dos recursos desenvolvidos.
+
+* O desenvolvimento deverá ser feito utilizando Spring Boot.
+* Apenas um controller é necessário
+* Não é necessário implementar services ou modelos. Cada rota pode retornar null ou um dado mockup (de exemplo e estático).
+
+**ATENÇÃO!** A postagem desse documento deverá ser feita no repositório de TODOS os membros do grupo.

@@ -37,7 +37,6 @@ A avaliação `N1` consiste na produção e entrega de exercícios de fixação 
 
 * A quantidade de exercícios utilizada nessa avaliação será definida ao final da disciplina.
 * Exercícios serão enviados aos estudantes semanalmente, em aula presencial, com prazo mínimo para resolução de 7 dias
-* 
 
 ---
 
@@ -52,6 +51,18 @@ Onde:
 `N = Nota final`
 `T = Número total de exercícios realizados na disciplina`
 `N = Número de exercícios postados e validados pelo estudante`
+
+---
+
+## Entrega
+
+Cada um dos exercícios deverá ser postado pelo estudante em um repositório pessoal em um serviço de hospedagem de repositórios git (Gitlab, Github...).
+
+O repositório será compartilhado com o professor e deve estar em **modo público** (ou com permissões de acesso ao professor).
+
+A raiz deve conter um arquivo README.md, assim como a separação de **uma pasta para cada um dos exercícios**.
+
+Exercícios em grupo **devem ser postados individualmente** por cada participante da equipe.
 
 ---
 
