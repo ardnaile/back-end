@@ -95,19 +95,19 @@ Verbos HTTP são utilizados para adicionar semântica à uma requisição HTTP. 
 |Verbo|Request Body|Response Body|Safe|Descrição|
 |---|---|---|---|---|
 |GET|[Opcional](https://www.rfc-editor.org/rfc/rfc9110#section-9.3.1-6)|Sim|Sim|Recupera um recurso|
-|POST|Sim|Sim|Sim|Processa recurso|
-|PUT|Sim|Sim|Sim|Substitui recurso|
-|PATCH|Sim|Sim|Sim|Altera recurso|
-|DELETE|Não|Sim|Sim|Remove recurso|
+|POST|Sim|Sim|Não|Processa recurso|
+|PUT|Sim|Sim|Não|Substitui recurso|
+|PATCH|Sim|Sim|Não|Altera recurso|
+|DELETE|Não|Sim|Não|Remove recurso|
 
 ---
 
 |Verbo|Request Body|Response Body|Safe|Descrição|
 |---|---|---|---|---|
 |HEAD|Não|Não|Sim|Apenas cabeçalhos|
-|CONNECT|Opcional|Sim|Sim|Estabelece conexão|
+|CONNECT|Opcional|Sim|Não|Estabelece conexão|
 |OPTIONS|Opcional|Sim|Sim|Opções de comunicacão|
-|TRACE|Opcional|Sim|Sim|Ping|
+|TRACE|Opcional|Sim|Não|Ping|
 
 > Mais informações em [RFC 9110](https://www.rfc-editor.org/rfc/rfc9110#section-9.3.1-6)
 
