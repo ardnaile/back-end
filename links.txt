@@ -9,3 +9,10 @@ https://forms.office.com/r/37B8tBHNVX
 
 # Avaliacao Parcial da Disciplina
 https://forms.office.com/r/7sx20u1cQy
+
+# Exemplos de Boilerplates SpringBoot
+- https://github.com/Genc/spring-boot-boilerplate
+- https://github.com/mewebstudio/java-spring-boot-boilerplate
+- https://github.com/gtiwari333/spring-boot-web-application-sample
+- https://github.com/tomoyane/springboot-bestpractice
+- https://github.com/sivaprasadreddy/techbuzz
