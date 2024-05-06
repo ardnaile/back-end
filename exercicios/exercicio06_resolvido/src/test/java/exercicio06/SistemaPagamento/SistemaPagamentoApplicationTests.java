@@ -1,10 +1,10 @@
-package exercicio06.SistemaPagamentos;
+package exercicio06.SistemaPagamento;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SistemaPagamentosApplicationTests {
+class SistemaPagamentoApplicationTests {
 
 	@Test
 	void contextLoads() {

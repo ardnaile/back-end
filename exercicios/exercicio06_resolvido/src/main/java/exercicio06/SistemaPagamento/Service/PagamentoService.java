@@ -1,8 +1,6 @@
-package exercicio06.SistemaPagamentos.Service;
-import exercicio06.SistemaPagamentos.Models.ContaModel;
-import org.springframework.boot.web.client.RestTemplateBuilder;
+package exercicio06.SistemaPagamento.Service;
+
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 @Service
 public class PagamentoService {

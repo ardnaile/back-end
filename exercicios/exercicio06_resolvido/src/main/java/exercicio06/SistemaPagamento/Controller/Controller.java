@@ -1,20 +1,21 @@
-package exercicio06.SistemaPagamentos.Controller;
+package exercicio06.SistemaPagamento.Controller;
 
-import exercicio06.SistemaPagamentos.Service.PagamentoService;
+import exercicio06.SistemaPagamento.Models.ContaModel;
+import exercicio06.SistemaPagamento.Service.*;
+import exercicio06.SistemaPagamento.Service.PagamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import exercicio06.SistemaPagamentos.Models.ContaModel;
-import exercicio06.SistemaPagamentos.Service.*;
-import org.springframework.web.client.HttpClientErrorException;;
+import org.springframework.web.client.HttpClientErrorException;
 
+;
 
 
 @RestController
 @RequestMapping("/")
-public class Controller{
+public class Controller {
     @Autowired
     private PagamentoService pagamentoService;
 

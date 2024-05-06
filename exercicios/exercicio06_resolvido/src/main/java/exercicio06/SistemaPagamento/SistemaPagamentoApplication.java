@@ -1,13 +1,13 @@
-package exercicio06.SistemaPagamentos;
+package exercicio06.SistemaPagamento;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SistemaPagamentosApplication {
+public class SistemaPagamentoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SistemaPagamentosApplication.class, args);
+		SpringApplication.run(SistemaPagamentoApplication.class, args);
 	}
 
 }

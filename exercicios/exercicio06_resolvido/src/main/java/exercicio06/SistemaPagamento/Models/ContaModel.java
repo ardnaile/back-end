@@ -1,4 +1,4 @@
-package exercicio06.SistemaPagamentos.Models;
+package exercicio06.SistemaPagamento.Models;
 
 public class ContaModel {
     private Integer id;
