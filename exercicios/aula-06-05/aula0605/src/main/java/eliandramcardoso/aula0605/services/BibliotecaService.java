@@ -26,10 +26,13 @@ public class BibliotecaService {
         List<LivroDto> listaDto = listaLivros.stream().map((livro) -> {
             return livroMapper.toDto(livro);
         }).toList();
+
         return listaDto;
     }
-    public Livro saveLivro(Livro livro){
+    public LivroDto saveLivro(LivroDto livroDto){
+        Livro livro = livroMapper.toEntity(livroDto);
+        livro.setAutor(new Autor("Autor padrao", new Date(), "nacionalidade")); // provisório
         listaLivros.add(livro);
-        return livro;
+        return livroMapper.toDto(livro);
     }
 }

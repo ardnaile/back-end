@@ -12,4 +12,14 @@ public class LivroMapper {
                 livro.getDt_lancamento()
         );
     }
+
+    public Livro toEntity(LivroDto livroDto){
+        return new Livro(
+                livroDto.titulo(),
+                "",
+                livroDto.paginas(),
+                livroDto.dt_lancamento(),
+                null // depois vamos tratar melhor
+        );
+    }
 }
