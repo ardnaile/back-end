@@ -21,6 +21,8 @@ paginate: true
 
 ## Calendário
 
+<dual>
+
 | nº | Turma 01 | Turma 02 |
 |--|--|--|
 |01|11 de Março|13 de Março|
@@ -29,6 +31,13 @@ paginate: true
 |04|01 de Abril|03 de Abril|
 |05|06 de Maio|08 de Maio|
 |06|06 de Maio|08 de Maio|
+
+| nº | Turma 01 | Turma 02 |
+|--|--|--|
+|07|13 de Maio|15 de Maio|
+|08|13 de Março|15 de Maio|
+
+</dual>
 
 ---
 
@@ -123,3 +132,42 @@ Utilizando os modelos do exercício anterior e da Fase 3 da [Atividade da Aula 1
 * Não é necessário implementar services ou modelos. Cada rota pode retornar null ou um dado mockup (de exemplo e estático).
 
 **ATENÇÃO!** A postagem desse documento deverá ser feita no repositório de TODOS os membros do grupo.
+
+---
+
+## Exercício 07
+
+Crie uma REST API usando Spring Boot e adicione os seguintes modelos:
+
+````java
+public class Cliente {
+  private String nome;
+  private Double saldo;
+  private String senha;
+}
+````
+
+````java
+public class Transacao {
+  private String recebedor;
+  private String pagador;
+  private Double quantidade;
+}
+````
+
+---
+
+Crie dois endpoints para a API:
+
+* `GET /cliente/{nome}` - retorna um cliente pelo nome, mas não mostra sua senha;
+* `POST /transacao` - insere uma nova transação. O corpo da mensagem de ida deve conter o nome do `pagador` e do `recebedor`, como também a `quantidade` de dinheiro a ser debitada e creditada. A resposta deverá ser as mesmas informações enviadas em caso de sucesso.
+
+Implemente todas as respostas usando DTOs e seus respectivos mappers. Adicione alguma validação a todos os atributos especificados nos DTOs.
+
+> Dica: Utilize uma estrutura de Hashmap para armazenar os clientes e inicie alguns clientes no construtor do service.
+
+---
+
+## Exercício 08
+
+Usando Hibernate Validation, adicione validações ao exercício anterior de modo que o toda transação enviada tenha um pagador, um recebedor e uma quantia maior do que 0. Adicione também mensagens para cada um dos atributos usando o atributo `message`.
