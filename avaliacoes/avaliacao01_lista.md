@@ -30,12 +30,15 @@ paginate: true
 |03|25 de Março|27 de Março|
 |04|01 de Abril|03 de Abril|
 |05|06 de Maio|08 de Maio|
-|06|06 de Maio|08 de Maio|
+
 
 | nº | Turma 01 | Turma 02 |
 |--|--|--|
-|07|13 de Maio|15 de Maio|
-|08|13 de Março|15 de Maio|
+|06|06 de Maio|08 de Maio|
+|07|13 de Maio|22 de Maio|
+|08|13 de Maio|22 de Maio|
+|09|20 de Maio|29 de Maio|
+|10|-|-|
 
 </dual>
 
@@ -171,3 +174,15 @@ Implemente todas as respostas usando DTOs e seus respectivos mappers. Adicione a
 ## Exercício 08
 
 Usando Hibernate Validation, adicione validações ao exercício anterior de modo que o toda transação enviada tenha um pagador, um recebedor e uma quantia maior do que 0. Adicione também mensagens para cada um dos atributos usando o atributo `message`.
+
+---
+
+## Exercício 09
+
+Usando Spring Boot, Spring Data e um banco de dados à sua escolha, implemente um CRUD completo (*GetOne*, *GetAll*, *Create*, *Update* e *Delete*) para uma entidade à sua escolha.
+
+Não esqueça de incluir ao menos um DTO de resposta e um DTO de requisição para a sua entidade.
+
+O repositório deve implementar a busca da entidade por nome;
+
+Não é necessário realizar a validação em nível de controlador.
