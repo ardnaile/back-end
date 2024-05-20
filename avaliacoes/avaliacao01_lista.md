@@ -35,9 +35,9 @@ paginate: true
 | nº | Turma 01 | Turma 02 |
 |--|--|--|
 |06|06 de Maio|08 de Maio|
-|07|13 de Maio|22 de Maio|
-|08|13 de Maio|22 de Maio|
-|09|20 de Maio|29 de Maio|
+|07|20 de Maio|22 de Maio|
+|08|20 de Maio|22 de Maio|
+|09|27 de Maio|29 de Maio|
 |10|-|-|
 
 </dual>
