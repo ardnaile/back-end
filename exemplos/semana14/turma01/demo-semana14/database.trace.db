@@ -1,0 +1,3 @@
+2024-05-20 20:32:35.429681-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ANIMAIS" not found (this database is empty); SQL statement:
+select a1_0.id,a1_0.ativo,a1_0.idade,a1_0.nome,a1_0.tipo from animais a1_0 [42104-224]
