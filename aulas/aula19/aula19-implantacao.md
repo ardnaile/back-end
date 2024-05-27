@@ -347,7 +347,266 @@ deploy-gitlab:
 
 ---
 
-## Google Run
+## Ambiente de Produção
+
+Existem diversas maneiras diferentes de tornar uma aplicação disponível na internet a partir da pasta do projeto, do projeto empacotado (jar ou war) ou do container docker.
+
+Quando uma aplicação encontra-se em ambiente operacional, onde pode ser utilizado para executar suas tarefas pretendidas em ambiente final, chamamos isso de **Ambiente de Produção**.
+
+---
+
+Existem diversas maneiras de realizar a implantação de um software a partir do seu código fonte, projeto compactado (`jar` ou `war`) ou seu container docker.
+
+Uma estrutura de nuvem (*cloud*) pode ser utilizada como implantação definitiva para um software, contendo todas as ferramentas necessárias para escalonar, controlar e monitorar o funcionamento da aplicação.
+
+No entanto, dezenas de configurações incluem também o uso de servidores locais, com servidores dedicados e/ou virtualizados, além de nuvens privadas em configuracões chamadas de ***On-Premise***.
+
+---
+
+### Implantação na Nuvem
+
+Serviços populares em nuvem oferecem diferentes configurações para implantação de aplicações dependendo das necessidades de uso e escalonamento. Em algumas das nuvens populares podem ser utilizados:
+
+* **Amazon Web Services**: Beanstalk (EB), Kubernetes (EKS), Container (ECS), Lambda
+* **Azure**: App Service, Kubernetes (AKS), Spring Apps, Functions
+* **Google Cloud**: App Engine, Kubernetes (GKE), Cloud Run, Cloud Functions
+* **Digital Ocean**: App Plataform, Kubernets, Droplets
+* **Oracle**: Cloud Infrastructure (OCI), Kubernets (OKE), Functions
+* **IBM**: Cloud Foundry, Kubernets, Functions
+
+---
+
+## Google Cloud Run
+
+Implantar um novo serviço usando o Cloud Run da Google exige que a aplicação esteja no formato de um container docker, mas permite liberdade para definir os serviços e a configuração de plataforma que será utilizada. 
+
+
+---
+
+`NOTA IMPORTANTE`: A maioria dos serviços em nuvem é pago por uso e exige uso de cartão de crédito. Não instancie novos serviços sem ter ideia dos custos gerados na sua conta.
+
+Alguns serviços contam com um ***Free Tier***, que estabelece cotas de uso que não são tarifados pelas plataformas.
+
+---
+
+Outra vantagem do Cloud Run é o escalonamento automático, que inicia novas instâncias do container em função da quantidade do uso atual da aplicação.
+
+Para configurações com maior complexidade e controle, como redes específicas e padrões de escalonamento mais rígidos, pode-se migrar do Cloud Run para o **Google Kubernets Engine** (GKE)
+
+---
+
+## Configurando Google Cloud
+
+Vamos seguir os seguintes passos para configurar nossa conta no Google Cloud:
+
+* Criar/Acessar uma conta Google e acessar o site: [console.google.com](https://console.google.com);
+* Criar um novo projeto;
+* Ativar o `Cloud Run Admin API`, `Service Usage API ` `Cloud Build API`;
+* Criar uma nova conta de serviço (opcional);
+* Criar uma nova chave para a conta de serviço e salvar;
+* Fazer a compilação do jar;
+* Adicionar o Dockerfile;
+* Usar o Cloud CLI e fazer o upload da aplicação;
+
+---
+
+![bg fit left:65%](https://m2msupport.net/m2msupport/wp-content/uploads/2021/04/gcp_create_new_project_2.png)
+
+### Tela inicial do Google Cloud
+
+Para criar um novo projeto, acesse o menu superior e clique no botão `New Project`
+
+---
+
+![bg fit right:65%](assets/001-criar-projeto.png)
+
+### Crie um novo projeto
+
+
+Nessa tela apenas especifique o nome do projeto. De preferência à nomes únicos.
+
+---
+
+![bg fit left:65%](assets/002-ativar-api.png)
+
+### Adicione novas APIs
+
+Procure pelo menu `API e Serviços` e em `APIs e serviços ativados` selecione o botão `Ativar APIS e Serviços`
+
+---
+
+![bg fit right:65%](assets/003-ativar-run.png)
+
+### Adicione as APIs necessárias
+
+Para essa implantação, vamos precisar de três APIs: `Cloud Run Admin`, `Service Usage API ` `Cloud Build API`. Ative as três nessa sequência.
+
+---
+
+![bg fit left:65%](assets/004-conta-servico.png)
+
+### Adicione as APIs necessárias
+
+Procure pelo menu `IAM e administração` e em `Contas de serviço` clique na conta de serviço `Default Compute service account` (ou crime uma nova)
+
+---
+
+![bg fit right:65%](assets/005-chave-servico.png)
+
+### Gere uma Chave
+
+Faça a geração de uma nova chave aba `Chaves` da conta de serviço, botão `Adicionar chave` e opção `Criar nova chave`. Crie a chave no formato `json` e faça o download.
+
+---
+
+### Compile sua aplicação
+
+Agora vá até a pasta do seu projeto e realize a compilação do pacote `jar` executando o comando na raiz da aplicação:
+
+````cmd
+mvn package
+````
+
+ou
+
+````cmd
+./mvnw package
+````
+
+Certifique-se de que o `.jar` foi gerado corretamente na pasta `target`.
+
+---
+
+### Criando o Dockerfile
+
+Crie um novo arquivo na raiz do projeto chamado `Dockerfile` com o conteúdo:
+
+````dockerfile
+FROM openjdk:17-alpine
+COPY /target/*.jar app.jar
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","/app.jar"]
+````
+
+Esse arquivo será usado pelo docker para construir uma imagem que executa a sua aplicação.
+
+> Você pode substituir o openjdk:17-alpine por openjdk:22-alpine caso use uma versão mais nova da JDK na sua aplicação.
+
+---
+
+### Google Cloud CLI
+
+Primeiro vamos usar o Google Cloud para realizar a *build* da nossa aplicação e armazená-la no **Container Registry**. Isso permite que aplicações possam ser executadas rapidamente com a imagem nos servidores da Google.
+
+Antes de tudo, vamos precisar de uma ferramenta chamada `gcloud`, que pode ser instalada a partir do site Google Cloud. Também podemos usar uma imagem docker que já possui essa ferramenta instalada.
+
+---
+
+#### Iniciando um container docker com `gcloud`
+
+Para iniciar um novo container docker, vamos primeiro organizar nosso projeto em uma pasta, junto com a chave `json` que baixamos da conta de serviço:
+
+````
+- meu_aplicativo
+  - src <-- pasta raiz do seu projeto
+  - chave.json <-- chave da conta de serviço
+````
+
+De preferência pra hierarquia acima para os próximos passos para não se perder. Abra o terminal na pasta `meu_aplicativo`.
+
+---
+
+Para rodar um container docker com o gcloud instalado, rode o seguinte comando no terminal enquanto estiver na pasta `meu_aplicativo` (que contém a pasta do projeto + chave):
+
+````cmd
+docker run -it --mount src=.,target=/app,type=bind google/cloud-sdk:alpine bash
+````
+
+A imagem do gcloud será baixada na primeira vez e um novo container será iniciado. Se tudo correr bem, você estará dentro do container assim que o processo for finalizado.
+
+Verifique que o seu projeto e a chave são acessíveis de dentro do contaienr usando os comandos `cd /app` e `ls -lA`.
+
+---
+
+#### Autenticando no gcloud
+
+Vamos autenticar no gcloud usando o comando:
+
+````sh
+gcloud auth activate-service-account --key-file nome-do-arquivo-da-chave.json
+````
+
+Se tudo correr bem, configure o caminho do seu projeto usando o comando:
+
+````sh
+gcloud config set project id-do-projeto
+````
+
+Verifique o ID do projeto na página do Google Cloud. Por fim, configure o docker:
+
+````sh
+gcloud auth configure-docker
+````
+
+---
+
+#### Realizando a Build
+
+Para realizar a build do projeto e a criação da imagem que será armazenada da nuvem da Google, use o comando:
+
+````sh
+gcloud builds submit --tag gcr.io/id-do-projeto/nome-do-servico
+````
+
+Não esqueça de substituir o id do seu projeto e o nome do servico, que representa um nome da imagem que será armazenada. Você pode utilizar o mesmo nome da sua aplicação (ex.: `meu-app`)
+
+---
+
+#### Rodando Cloud Run
+
+Por fim, com a imagem armazenada na nuvem, utilize o mesmo nome de serviço e execute o comando a seguir para criar o *runner* para a sua aplicação no Google Cloud Run.
+
+````sh
+gcloud run deploy nome-do-servico --image gcr.io/id-do-projeto/nome-do-servico --region=us-central1 --platform managed --allow-unauthenticated
+````
+
+E pronto! Sua aplicação deve estar disponível na web =)
+
+> Caso a aplicação não seja acessível (FORBIDDEN), altere a configuração no Google Run para permitir o acesso não autenticado.
+
+---
+
+## Gitlab CI/CD e Google Run
+
+Para automatizar o deploy usando as pipelines de CI/CD do Gitlab, podemos adicionar (ou criar caso não exista) ao arquivo `gitlab-ci.yml` o seguinte modelo de *job*:
+
+````yml
+deploy-gcloud:
+  image: google/cloud-sdk:alpine
+  stage: deploy
+  script:
+    - echo $SERVICE_ACCOUNT_KEY > service-account-key.json
+    - gcloud auth activate-service-account --key-file service-account-key.json
+    - gcloud config set project $PROJECT_ID 
+    - gcloud auth configure-docker
+    - gcloud builds submit --tag gcr.io/$PROJECT_ID/$SERVICE_ID
+    - gcloud run deploy $SERVICE_ID --image gcr.io/$PROJECT_ID/$SERVICE_ID --region=us-central1 --platform managed --allow-unauthenticated
+  dependencies:
+    - build
+  when: manual
+  only:
+    - master
+````
+
+---
+
+Repare o uso de algumas variáveis no script. Dessa forma vamos precisar inicializar essas variáveis diretamente na configuração do projeto no Gitlab, em `Configurações` > `CICD` > `Variáveis`.
+
+Insira cada uma das três variáveis:
+
+* Chave `SERVICE_ID`: valor `nome_da_aplicacao` (escolha um nome)
+* Chave `PROJECT_ID`: valor `slug-projeto` (nome encontrado na página inicial do projeto no Google Cloud, chamada `ID do projeto`);
+* Chave `SERVICE_ACCOUNT_KEY`: copie o conteúdo da chave `.json` gerada anteriormente.
 
 ---
 
@@ -405,4 +664,8 @@ docker compose up -D
 
 ## O que aprendemos hoje
 
-* 
+* Executar comandos básicos do maven;
+* O que é o Docker Engine e como criar imagens e containers;
+* Como automatizar pipelines usando o CICD do Gitlab;
+* Como criar containers usando o CICD;
+* Como fazer deploy de um container no Google Cloud;
