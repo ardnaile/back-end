@@ -1,15 +1,14 @@
 package eliandracardoso.exercicio7.Models;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.*;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.UUID;
-
-// @Entity
-// @Table(name = "clientes")
+@Document(collection = "clientes")
 public class Cliente {
-    // @Id
-    // @GeneratedValue(strategy = GenerationType.UUID)
-    // private UUID id;
+
+    @Id
+    private ObjectId id;
     private String nome;
     private double saldo;
     private String senha;
@@ -19,7 +18,13 @@ public class Cliente {
         this.saldo = saldo;
         this.senha = senha;
     }
+    public ObjectId getId() {
+        return id;
+    }
 
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
     public String getNome() {
         return nome;
     }
