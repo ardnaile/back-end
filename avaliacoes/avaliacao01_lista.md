@@ -38,7 +38,7 @@ paginate: true
 |07|20 de Maio|22 de Maio|
 |08|20 de Maio|22 de Maio|
 |09|27 de Maio|29 de Maio|
-|10|-|-|
+|10|09 de Junho|09 de Junho|
 
 </dual>
 
@@ -186,3 +186,67 @@ Não esqueça de incluir ao menos um DTO de resposta e um DTO de requisição pa
 O repositório deve implementar a busca da entidade por nome;
 
 Não é necessário realizar a validação em nível de controlador.
+
+---
+
+## Exercício 10
+
+> "Um commit para todos governar, um commit para encontrá-los"
+
+### Organização
+
+Organize seu repositório de exercícios corretamente. A raiz do repositório deve estar organizada em 10 pastas com o seguinte padrão: `exercicioXX`, onde `XX` é o número do exercício (Ex.: `exercicio01`). Não utilize minúsculas ou acentos, use todos os números com 2 dígitos.
+
+Crie também um arquivo `README.md` na raiz com a descrição do repositório e um arquivo chamado `gitlab-ci.yml`.
+
+---
+
+Seu repositório estará organizado exatamente dessa maneira:
+
+````
+- Pasta Raiz
+  - exercicio01
+  - exercicio02
+  - exercicio03
+  - exercicio04
+  - exercicio05
+  - exercicio06
+  - exercicio07
+  - exercicio08
+  - exercicio09
+  - exercicio10
+  - README.md
+  - .gitlab-ci.yml
+````
+
+---
+
+### Variáveis de pipeline
+
+Crie duas variáveis de CI/CD no seu projeto chamadas `STUDENT_ID` e `STUDENT_NAME`, com os valores do seu código de estudante e seu nome, respectivamente.
+
+---
+
+### Adicionando uma pipeline
+
+Dentro do arquivo `.gitlab-ci.yml`, adicione o seguinte conteúdo:
+
+````yml
+stages:
+  - review
+review:
+  stage: review
+  image: registry.gitlab.com/professor-rvenson/backend-n1-validate
+  script:
+    - validate
+````
+
+Depois das alterações, faça o commit e envie as alterações para os seu repositório. Certifique-se de que a pipeline rodou corretamente.
+
+> Para repositórios no Github, utilize a documentação do Github Actions.
+
+---
+
+## Fim
+
+Após a implementação de todos os exercícios, aguarde a atualização do professor a respeito da nota desse repositório. É importante relembrar: o repositório deve conter APENAS os exercícios realizados na disciplina. Todos os estudantes devem ter as 10 pastas de cada um dos exercícios.
