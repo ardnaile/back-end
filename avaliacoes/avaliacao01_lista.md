@@ -247,6 +247,39 @@ Depois das alterações, faça o commit e envie as alterações para os seu repo
 
 ---
 
+### Alternativa pra Github
+
+Para os que estiverem usando Github, devem criar uma pasta na raiz do projeto chamada ``.github/workflows``. Um arquivo dentro da pasta workflows com o nome de ``ci.yml`` com o seguinte conteúdo da página a seguir.
+
+Não esqueça de criar as variáveis de ambiente: `STUDENT_ID` e `STUDENT_NAME` no menu `Settings` > `Secrets and variables` > `Actions` e aba `Variables`.
+
+---
+
+````yml
+name: CI
+on:
+  push:
+    branches:
+      - master
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    container:
+      image: registry.gitlab.com/professor-rvenson/backend-n1-validate
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Validate
+        run: validate
+        env:
+          STUDENT_ID: ${{ vars.STUDENT_ID }}
+          STUDENT_NAME: ${{ vars.STUDENT_NAME }}
+````
+
+> Configuração apenas para o GITHUB!
+
+---
+
 ## Fim
 
 Após a implementação de todos os exercícios, aguarde a atualização do professor a respeito da nota desse repositório. É importante relembrar: o repositório deve conter APENAS os exercícios realizados na disciplina. Todos os estudantes devem ter as 10 pastas de cada um dos exercícios.
